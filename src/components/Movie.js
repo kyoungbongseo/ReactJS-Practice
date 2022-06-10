@@ -24,7 +24,15 @@ function Movie({ id, coverImg, title, summary, genres }) {
 			{/*<img src={coverImg} alt={title} />*/}
 			<h2>
 				{/*<a href="/movie">{title}</a>*/}
-				<Link to={`/movie/${id}`}>{title}</Link>
+				<Link
+					to={
+						process.env.NODE_ENV === "production"
+							? `/ReactJS-Practice/movie/${id}`
+							: `/movie/${id}`
+					}
+				>
+					{title}
+				</Link>
 				{/* <Link> is used to move to a web page without refreshing browser. */}
 			</h2>
 			<p>{summary}</p>

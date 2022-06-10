@@ -20,9 +20,28 @@ function App5() {
 		<Router>
 			<Routes>
 				{/* More than one <Route> are nested in <Routes> to be rendered only one <Route> in one time. */}
-				<Route path="/hello" element={<h1>Hello</h1>} />
-				<Route path="/movie/:id" element={<Detail />} />
-				<Route path="/" element={<Home />} />
+				<Route
+					path={
+						process.env.NODE_ENV === "production"
+							? "/ReactJS-Practice/hello"
+							: "hello"
+					}
+					element={<h1>Hello</h1>}
+				/>
+				<Route
+					path={
+						process.env.NODE_ENV === "production"
+							? "/ReactJS-Practice/movie/:id"
+							: "/movie/:id"
+					}
+					element={<Detail />}
+				/>
+				<Route
+					path={
+						process.env.NODE_ENV === "production" ? "/ReactJS-Practice" : "/"
+					}
+					element={<Home />}
+				/>
 			</Routes>
 		</Router>
 	);
